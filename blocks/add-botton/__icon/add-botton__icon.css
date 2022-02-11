@@ -1,0 +1,22 @@
+.add-botton__icon {
+    /*color: #FFFFFF;*/
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+}
+
+@media screen and (max-width: 1023px) {
+    .add-botton__icon {
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .add-botton__icon {
+        width: 16px;
+        height: 16px;
+    }
+}
