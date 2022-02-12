@@ -1,4 +1,4 @@
-.add-botton {
+.add-button {
     display: flex;
     margin: 0;
     padding: 14px 64px;
@@ -8,13 +8,13 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .add-botton {
+    .add-button {
         padding: 15px 100px;
     }
 }
 
 @media screen and (max-width: 767px) {
-    .add-botton {
+    .add-button {
         padding: 17px 133px;
     }
 }

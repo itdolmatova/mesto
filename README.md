@@ -31,5 +31,7 @@
 to do
 подкл шрифт 500 
 profile title & subtitle media 1023
-bUtton
+
 edit add button border check
+photo-grid переделать на elements
+edit button на малых разрешениях спозиционировать relative left

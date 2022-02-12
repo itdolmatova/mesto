@@ -1,0 +1,21 @@
+.edit-button {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 1023px) {
+    .edit-button {
+        width: 21px;
+        height: 21px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .edit-button {
+        width: 18px;
+        height: 18px;
+    }
+}
