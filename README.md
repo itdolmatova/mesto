@@ -35,3 +35,4 @@ profile title & subtitle media 1023
 edit add button border check
 
 edit button на малых разрешениях спозиционировать relative left
+Исследователь океана и аватарка (скорее всего аватарку через div) - на мал.разрешении сделать по центу

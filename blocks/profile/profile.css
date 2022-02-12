@@ -5,7 +5,7 @@
     padding: 36.25px 200px 0 177.5px;
     justify-content: space-between;
     align-items: center;
-    max-width: 1280px;
+    max-width: calc(1280px - (200px + 177.5px));
 }
 
 @media screen and (max-width: 1023px) {
