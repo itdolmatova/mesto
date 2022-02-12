@@ -36,3 +36,9 @@ edit add button border check
 
 edit button на малых разрешениях спозиционировать relative left
 Исследователь океана и аватарка (скорее всего аватарку через div) - на мал.разрешении сделать по центу
+переполнение блока с текстом (element__title ++, input name and profession)- многоточие для длинных фраз: 
+.block {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+} 
