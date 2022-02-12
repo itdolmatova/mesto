@@ -33,5 +33,5 @@ to do
 profile title & subtitle media 1023
 
 edit add button border check
-element переделать на elements
+
 edit button на малых разрешениях спозиционировать relative left
