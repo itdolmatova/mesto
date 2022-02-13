@@ -1,17 +1,19 @@
 .edit-form {
     margin: 0 auto;
-    padding: 34px 0 37px;
+    padding: 34px 36px 37px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    max-width: 430px;
-    max-height: 330px;
+    /*align-items: flex-start;*/
+    width: 430px;
+    min-height: 330px;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 767px)  {
     .edit-form {
-        max-width: 282px;
-        max-height: 322px;
+        width: 282px;
+        min-height: 322px;
+        padding: 25px 22px;
     }
 }

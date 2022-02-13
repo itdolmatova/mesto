@@ -5,14 +5,14 @@
     color: #000000;
     display: flex;
     margin: 0;
-    padding: 0 36px;
+    /*padding: 0 36px;*/
 }
 
 @media screen and (max-width: 1023px) {
     .edit-form__title {
         font-size: 20px;
         line-height: 1.21;
-        padding: 0 28px;
+        /*padding: 0 28px;*/
     }
 }
 
@@ -20,6 +20,6 @@
     .edit-form__title {
         font-size: 18px;
         line-height: 1.22;
-        padding: 0 22px;
+        /*padding: 0 22px;*/
     }
 }

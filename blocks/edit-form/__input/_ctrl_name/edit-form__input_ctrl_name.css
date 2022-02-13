@@ -1,4 +1,8 @@
 .edit-form__input_ctrl_name {
+    margin-top: 54px;
+}
+
+/*.edit-form__input_ctrl_name {
     margin: 0;
     padding: 54px 36px 0;
 }
@@ -13,4 +17,4 @@
     .edit-form__input_ctrl_name {
         padding: 75px 22px 0; 
     }
-}
+}*/

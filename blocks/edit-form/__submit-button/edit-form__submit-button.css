@@ -1,11 +1,18 @@
 .edit-form__submit-button {
+    font-family: inherit;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.22;
     text-align: center;
     color: #FFFFFF;
+    display: block;
+    background: #000000;
+    border-radius: 2px;
     margin: 0;
     padding: 0;
+    border: 0;
+    width: 100%;
+    height: 50px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -18,5 +25,6 @@
     .edit-form__submit-button {
         font-size: 14px;
         line-height: 1.21;
+        height: 46px;
     }
 }
