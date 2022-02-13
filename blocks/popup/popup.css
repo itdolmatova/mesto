@@ -1,0 +1,6 @@
+.popup {
+    display: none;
+    width: 100%;
+    background: #000000;
+    opacity: 0.5;
+}

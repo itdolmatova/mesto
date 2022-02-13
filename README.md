@@ -42,3 +42,10 @@ edit button на малых разрешениях спозиционирова�
   white-space: nowrap;
   overflow: hidden;
 } 
+
+черное сердечко element__like
+hover на сердечке
+      на edit-button
+      на add-button
+      на close
+      на кнопке Сохранить(submit)
