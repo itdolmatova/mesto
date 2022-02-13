@@ -1,0 +1,8 @@
+.edit-form {
+    margin: 0 auto;
+    padding: 34px 0 37px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

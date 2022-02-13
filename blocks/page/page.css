@@ -8,6 +8,7 @@
   background: #2A2C2F;
   font-family: 'Inter', Arial, sans-serif;
   color: #FFFFFF;
+  position: relative;
   
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

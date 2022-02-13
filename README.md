@@ -49,3 +49,5 @@ hover на сердечке
       на add-button
       на close
       на кнопке Сохранить(submit)
+
+opacity popup
