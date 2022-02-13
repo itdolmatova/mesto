@@ -4,4 +4,19 @@
     line-height: 1.22;
     text-align: center;
     color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+    .edit-form__submit-button {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .edit-form__submit-button {
+        font-size: 14px;
+        line-height: 1.21;
+    }
 }

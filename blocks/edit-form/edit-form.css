@@ -5,4 +5,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    max-width: 430px;
+    max-height: 330px;
+}
+
+@media screen and (max-width: 767px)  {
+    .edit-form {
+        max-width: 282px;
+        max-height: 322px;
+    }
 }

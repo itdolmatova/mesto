@@ -1,17 +1,16 @@
 .edit-form__input_ctrl_name {
     margin: 0;
-    padding: 54px 0 0;
+    padding: 54px 36px 0;
 }
-
 
 @media screen and (max-width: 1023px) {
     .edit-form__input_ctrl_name {
-        padding: 60px 0 0; 
+        padding: 60px 28px 0; 
     }
 }
 
 @media screen and (max-width: 767px) {
     .edit-form__input_ctrl_name {
-        padding: 75px 0 0; 
+        padding: 75px 22px 0; 
     }
 }

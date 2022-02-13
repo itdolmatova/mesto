@@ -38,7 +38,7 @@
 @import url(../blocks/edit-form/__input/edit-form__input.css);
 @import url(../blocks/edit-form/__input/_ctrl_name/edit-form__input_ctrl_name.css);
 @import url(../blocks/edit-form/__input/_ctrl_job/edit-form__input_ctrl_job.css);
-@import url(.);
+@import url(../blocks/edit-form/__submit-button/edit-form__submit-button.css);
 @import url(.);
 
 @import url(../blocks/footer/footer.css);
