@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-@media screen and (max-width: 767px)  {
+@media screen and (max-width: 767px) {
     .edit-form {
         width: 282px;
         min-height: 322px;
