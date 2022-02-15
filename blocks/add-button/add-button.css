@@ -6,6 +6,12 @@
     box-sizing: border-box;
     border-radius: 2px;
     max-width: 282px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in 0s;
+}
+
+.add-button:hover {
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 1023px) {
