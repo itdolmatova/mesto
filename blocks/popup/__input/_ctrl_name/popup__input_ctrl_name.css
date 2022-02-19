@@ -1,9 +1,9 @@
-.edit-form__input_ctrl_name {
+.popup__input_ctrl_name {
     margin: 35px 0 0;
 }
 
 @media screen and (max-width: 767px) {
-    .edit-form__input_ctrl_name {
+    .popup__input_ctrl_name {
         margin: 62px 0 0;
     }
 }
