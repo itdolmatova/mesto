@@ -23,13 +23,13 @@
           <div class="profile__info">
             <div class="profile__edit">
               <h1 class="profile__title">Жак&#8209;Ив&nbsp;Кусто</h1>
-              <img class="edit-button" src="./images/edit-button.png" alt="Редактировать">
+              <button class="profile__edit-button"></button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <div class="add-button">
-          <img class="add-button__icon" src="./images/add-button.png" alt="Добавить">
+        <div class="profile__add-button">
+          <button class="profile__add-button-icon"></button>
         </div>
 
       </section>
@@ -42,7 +42,7 @@
             <img class="element__photo" src="./images/photo_karachaevsk.jpg" alt="Карачаевск">
             <div class="element__description">
               <h2 class="element__title">Карачаево-Черкессия</h2>
-              <img class="element__like" src="./images/img_like.svg" alt="Понравилось">
+              <button class="element__like"></button>
             </div>
           </li>
 
@@ -50,7 +50,7 @@
             <img class="element__photo" src="./images/photo_elbrus.jpg" alt="Эльбрус">
             <div class="element__description">
               <h2 class="element__title">Эльбрус</h2>
-              <img class="element__like" src="./images/img_like.svg" alt="Понравилось">
+              <button class="element__like"></button>
             </div>
           </li>
 
@@ -58,7 +58,7 @@
             <img class="element__photo" src="./images/photo_dombai.jpg" alt="Домбай">
             <div class="element__description">
               <h2 class="element__title">Домбай</h2>
-              <img class="element__like" src="./images/img_like.svg" alt="Понравилось">
+              <button class="element__like"></button>
             </div>
           </li>
 
@@ -66,7 +66,7 @@
             <img class="element__photo" src="./images/place-altai.jpg" alt="Алтай">
             <div class="element__description">
               <h2 class="element__title">Алтай</h2>
-              <img class="element__like" src="./images/img_like.svg" alt="Понравилось">
+              <button class="element__like"></button>
             </div>
           </li>
 
@@ -74,7 +74,7 @@
             <img class="element__photo" src="./images/place-karelia.jpg" alt="Карелия">
             <div class="element__description">
               <h2 class="element__title">Карелия</h2>
-              <img class="element__like" src="./images/img_like.svg" alt="Понравилось">
+              <button class="element__like"></button>
             </div>
           </li>
 
@@ -82,7 +82,7 @@
             <img class="element__photo" src="./images/place-kolsky.jpg" alt="Кольский">
             <div class="element__description">
               <h2 class="element__title">Кольский</h2>
-              <img class="element__like" src="./images/img_like.svg" alt="Понравилось">
+              <button class="element__like"></button>
             </div>
           </li>
 
@@ -100,22 +100,22 @@
         <form class="edit-form">
           <h2 class="edit-form__title">Редактировать профиль</h2>
           <fieldset class="edit-form__input-container">
-            <input class="edit-form__input edit-form__input_ctrl_name" type="text" name="name" value="Жак-Ив Кусто"
+            <input class="edit-form__input edit-form__input_ctrl_name" type="text" name="name"
               placeholder="Имя">
             <input class="edit-form__input edit-form__input_ctrl_job" type="text" name="job"
-              value="Исследователь океана" placeholder="О себе">
+              placeholder="О себе">
           </fieldset>
-          <fieldset class="edit-form__handlers">
+          <div class="edit-form__handlers">
             <input type="submit" class="edit-form__submit-button" value="Сохранить">
-          </fieldset>
+          </div>
         </form>
-        <img class="popup__close-button" src="./images/close-icon.png" alt="Закрыть">
+        <button class="popup__close-button" src="./images/close-icon.svg" alt="Закрыть"></button>
       </div>
     </div>
 
   </div>
 
-  <script src="index.js"></script>
+  <script src="./scripts/index.js"></script>
 
 </body>
 
