@@ -3,7 +3,7 @@
 let profile = document.querySelector('.profile__info');
 let profileTitle = profile.querySelector('.profile__title');
 let profileSubtitle = profile.querySelector('.profile__subtitle');
-let editButton = profile.querySelector('.edit-button');
+let editButton = profile.querySelector('.profile__edit-button');
 
 let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close-button');
