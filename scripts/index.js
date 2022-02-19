@@ -1,5 +1,5 @@
 //при нажатии на кнопку Редактировать профиль добавлять модификатор .popup_opened
-//при нажатии на крестик в edit-form убирать класс .popup_opened
+//при нажатии на крестик в popup__ убирать класс .popup_opened
 let profile = document.querySelector('.profile__info');
 let profileTitle = profile.querySelector('.profile__title');
 let profileSubtitle = profile.querySelector('.profile__subtitle');
@@ -8,9 +8,9 @@ let editButton = profile.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close-button');
 
-let formElement = document.querySelector(".edit-form");
-let nameInput = formElement.querySelector(".edit-form__input_ctrl_name");
-let jobInput = formElement.querySelector(".edit-form__input_ctrl_job");
+let formElement = document.querySelector(".popup");
+let nameInput = formElement.querySelector(".popup__input_ctrl_name");
+let jobInput = formElement.querySelector(".popup__input_ctrl_job");
 
 function popupOpened() {
   popup.classList.add('popup_opened');
