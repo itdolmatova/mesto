@@ -21,7 +21,7 @@ function openPopup() {
 editButton.addEventListener('click', openPopup);
 
 function closePopup() {
-  popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened'); 
 }
 
 closeButton.addEventListener('click', closePopup);
@@ -45,3 +45,45 @@ function handleProfileFormSubmit(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleProfileFormSubmit);
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+const placeContainer = document.querySelector('.places__list');
+
+function addPlace (photoValue, titleValue) {
+  const placeTemplate = document.querySelector('#place-template').content;
+  const placeElement = placeTemplate.querySelector('.place-template').cloneNode(true);  
+  
+  placeElement.querySelector('.place__photo').textContent = photoValue;
+  placeElement.querySelector('.place__title').textContent = titleValue;
+  placeContainer.append(placeElement);
+  console.log(placeElement);
+}
+
+
+
