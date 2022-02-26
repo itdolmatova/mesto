@@ -1,50 +1,57 @@
 //при нажатии на кнопку Редактировать профиль добавлять модификатор .popup_opened
 //при нажатии на крестик в popup__ убирать класс .popup_opened
-const profile = document.querySelector('.profile__info');
+const profile = document.querySelector('.profile');
 const profileTitle = profile.querySelector('.profile__title');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
 const editButton = profile.querySelector('.profile__edit-button');
+const placeContainer = document.querySelector('.places__list');
+const placeTitle = placeContainer.querySelector('.place__title');
+const placePhoto = placeContainer.querySelector('.place__photo');
+const addButton = profile.querySelector('.profile__add-button');
 
-const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.popup__close-button');
+const popupEditProfile = document.querySelector('.popup_edit-profile');
+const popupAddPlace = document.querySelector('.popup_add-place');
 
-const formElement = document.querySelector(".popup");
-const nameInput = formElement.querySelector(".popup__input_ctrl_name");
-const jobInput = formElement.querySelector(".popup__input_ctrl_job");
+const nameInput = popupEditProfile.querySelector(".popup__input_ctrl_name");
+const jobInput = popupEditProfile.querySelector(".popup__input_ctrl_job");
 
-function openPopup() {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
 }
 
-editButton.addEventListener('click', openPopup);
-
-function closePopup() {
+function closePopup(popup) {
   popup.classList.remove('popup_opened'); 
 }
 
-closeButton.addEventListener('click', closePopup);
+editButton.addEventListener('click', function(){
+  openPopup(popupEditProfile);
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+});
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+addButton.addEventListener('click', function() {
+  openPopup(popupAddPlace);
+  nameInput.value = '';
+  srcInput.value = '';
+});
+
+popupEditProfile.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupEditProfile)});
+popupAddPlace.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupAddPlace)});
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Так мы можем определить свою логику отправки.
-  // О том, как это делать, расскажем позже.
-
-  // Получите значение полей jobInput и nameInput из свойства value
-  // Выберите элементы, куда должны быть вставлены значения полей
-
-  // Вставьте новые значения с помощью textContent
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  closePopup();
+  closePopup(popupEditProfile);
 }
+popupEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleProfileFormSubmit);
+function handleAddPlaceFormSubmit(evt) {
+  evt.preventDefault();
+  placeTitle.textContent = nameInput.value;
+  placePhoto.textContent = srcInput.value;
+}
+popupAddPlace.addEventListener('submit', handleAddPlaceFormSubmit);
 
 const initialCards = [
   {
@@ -73,8 +80,6 @@ const initialCards = [
   }
 ];
 
-const placeContainer = document.querySelector('.places__list');
-
 function addPlace (photoValue, titleValue) {
   const placeTemplate = document.querySelector('#place-template').content;
   const placeElement = placeTemplate.querySelector('.place').cloneNode(true);  
@@ -90,7 +95,3 @@ function addPlace (photoValue, titleValue) {
 initialCards.forEach(function (item) {
   addPlace(item.link, item.name);
 });
-
-
-
-
