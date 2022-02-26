@@ -81,6 +81,8 @@ function addPlace (photoValue, titleValue) {
   
   placeElement.querySelector('.place__photo').src = photoValue;
   placeElement.querySelector('.place__title').textContent = titleValue;
+  placeElement.querySelector('.place__photo').alt = titleValue;
+
   placeContainer.append(placeElement);
   console.log(placeElement);
 }
