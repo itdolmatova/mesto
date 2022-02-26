@@ -77,13 +77,18 @@ const placeContainer = document.querySelector('.places__list');
 
 function addPlace (photoValue, titleValue) {
   const placeTemplate = document.querySelector('#place-template').content;
-  const placeElement = placeTemplate.querySelector('.place-template').cloneNode(true);  
+  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);  
   
-  placeElement.querySelector('.place__photo').textContent = photoValue;
+  placeElement.querySelector('.place__photo').src = photoValue;
   placeElement.querySelector('.place__title').textContent = titleValue;
   placeContainer.append(placeElement);
   console.log(placeElement);
 }
+
+initialCards.forEach(function (item) {
+  addPlace(item.link, item.name);
+});
+
 
 
 
