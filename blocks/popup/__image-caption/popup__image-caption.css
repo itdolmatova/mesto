@@ -7,9 +7,3 @@
     line-height: 15px;
     color: #fff;
 }
-
-
-@media screen and (max-width: 767px) {
-    .popup__image-caption {
-    }
-}

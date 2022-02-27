@@ -11,6 +11,7 @@ const addButton = profile.querySelector('.profile__add-button');
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddPlace = document.querySelector('.popup_add-place');
+const popupImage = document.querySelector('.popup_image');
 
 const nameInput = popupEditProfile.querySelector('.popup__input_ctrl_name');
 const jobInput = popupEditProfile.querySelector('.popup__input_ctrl_job');
@@ -40,6 +41,7 @@ addButton.addEventListener('click', function() {
 
 popupEditProfile.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupEditProfile)});
 popupAddPlace.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupAddPlace)});
+popupImage.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupImage)});
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -84,6 +86,12 @@ function createPlace (photoValue, titleValue) {
   placeElement.querySelector('.place__title').textContent = titleValue;
   placeElement.querySelector('.place__photo').alt = titleValue;
   
+  placeElement.querySelector('.place__photo').addEventListener('click', function() {
+    openPopup(popupImage);
+    popupImage.querySelector('.popup__image-photo').src = photoValue; 
+    popupImage.querySelector('.popup__image-caption').textContent = titleValue;
+  })
+
   const buttonLike = placeElement.querySelector('.place__like');
   buttonLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('place__like_active');
