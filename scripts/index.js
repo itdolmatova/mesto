@@ -1,5 +1,3 @@
-//при нажатии на кнопку Редактировать профиль добавлять модификатор .popup_opened
-//при нажатии на крестик в popup__ убирать класс .popup_opened
 const profile = document.querySelector('.profile');
 const profileTitle = profile.querySelector('.profile__title');
 const profileSubtitle = profile.querySelector('.profile__subtitle');
@@ -24,24 +22,24 @@ function openPopup(popup) {
 }
 
 function closePopup(popup) {
-  popup.classList.remove('popup_opened'); 
+  popup.classList.remove('popup_opened');
 }
 
-editButton.addEventListener('click', function(){
+editButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 });
 
-addButton.addEventListener('click', function() {
+addButton.addEventListener('click', function () {
   openPopup(popupAddPlace);
   placeInput.value = '';
   srcInput.value = '';
 });
 
-popupEditProfile.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupEditProfile)});
-popupAddPlace.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupAddPlace)});
-popupImage.querySelector('.popup__close-button').addEventListener('click', function() {closePopup(popupImage)});
+popupEditProfile.querySelector('.popup__close-button').addEventListener('click', function () { closePopup(popupEditProfile) });
+popupAddPlace.querySelector('.popup__close-button').addEventListener('click', function () { closePopup(popupAddPlace) });
+popupImage.querySelector('.popup__close-button').addEventListener('click', function () { closePopup(popupImage) });
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -78,23 +76,29 @@ const initialCards = [
   }
 ];
 
-function createPlace (photoValue, titleValue) {
+function createPlace(photoValue, titleValue) {
   const placeTemplate = document.querySelector('#place-template').content;
-  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);  
-  
+  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+
   placeElement.querySelector('.place__photo').src = photoValue;
   placeElement.querySelector('.place__title').textContent = titleValue;
   placeElement.querySelector('.place__photo').alt = titleValue;
-  
-  placeElement.querySelector('.place__photo').addEventListener('click', function() {
+
+  placeElement.querySelector('.place__photo').addEventListener('click', function () {
     openPopup(popupImage);
-    popupImage.querySelector('.popup__image-photo').src = photoValue; 
+    popupImage.querySelector('.popup__image-photo').src = photoValue;
     popupImage.querySelector('.popup__image-caption').textContent = titleValue;
   })
 
   const buttonLike = placeElement.querySelector('.place__like');
   buttonLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('place__like_active');
+  });
+
+  const buttonDelete = placeElement.querySelector('.place__delete-button');
+  buttonDelete.addEventListener('click', function (evt) {
+    const listItem = buttonDelete.closest('.place');
+    listItem.remove();
   });
 
   return placeElement;
@@ -110,8 +114,7 @@ function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
   const placeElement = createPlace(srcInput.value, placeInput.value);
   const firstElement = placeContainer.querySelector('.place');
-  firstElement.replaceWith(placeElement);
+  if (firstElement === null) placeContainer.append(placeElement); else firstElement.replaceWith(placeElement);
   closePopup(popupAddPlace);
 }
 popupAddPlace.addEventListener('submit', handleAddPlaceFormSubmit);
-

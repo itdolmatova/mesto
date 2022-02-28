@@ -3,7 +3,7 @@
     padding: 0;
     width: 75vw;
     height: 75vh;
-    max-width:  816px;
+    max-width: 816px;
     max-height: 540px;
     background-position: center;
     background-size: cover;
@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 767px) {
     .popup__image-photo {
-        max-width:  240px;
+        max-width: 240px;
         max-height: 299px;
     }
 }
