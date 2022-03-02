@@ -1,4 +1,20 @@
 .place {
+    display: grid;
+    position: relative;
+    grid-template-columns: 190px 62px;
+    grid-template-rows: 1fr 79px;
+    list-style-type: none;
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: stretch;
+    justify-items: stretch;
+    column-gap: 30px;
+}
+
+
+/*.place {
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -11,4 +27,4 @@
     justify-content: flex-start;
     overflow: hidden;
     position: relative;
-}
+}*/
