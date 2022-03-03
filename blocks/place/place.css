@@ -12,19 +12,3 @@
     justify-items: stretch;
     column-gap: 30px;
 }
-
-
-/*.place {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
-    background: #FFFFFF;
-    border-radius: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
-    position: relative;
-}*/
