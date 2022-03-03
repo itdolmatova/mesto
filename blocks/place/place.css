@@ -1,7 +1,7 @@
 .place {
     display: grid;
     position: relative;
-    grid-template-columns: 190px 62px;
+    grid-template-columns: minmax(190px 1fr) minmax(62px, 1fr);
     grid-template-rows: 1fr 79px;
     list-style-type: none;
     background-color: #fff;
