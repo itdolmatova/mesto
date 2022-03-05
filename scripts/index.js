@@ -63,7 +63,6 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupEditProfile);
 }
 
-
 function createPlace(photoValue, titleValue) {
   const placeElement = placeElementTemplate.cloneNode(true);
   const placeElementPhoto =  placeElement.querySelector('.place__photo');
