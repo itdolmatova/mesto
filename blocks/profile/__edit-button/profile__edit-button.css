@@ -1,6 +1,8 @@
 .profile__edit-button {
-    display: flex;
-    margin: 0 5px 0 0;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    position: relative;
+    bottom: 5px;
     width: 24px;
     height: 24px;
     border: 1px solid #FFFFFF;
