@@ -1,8 +1,7 @@
 .profile__edit-button {
     grid-column: 2/3;
     grid-row: 1/2;
-    position: relative;
-    bottom: 5px;
+    align-self: center;
     width: 24px;
     height: 24px;
     border: 1px solid #FFFFFF;

@@ -1,8 +1,0 @@
-.profile__edit {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin: 0 auto;
-    padding: 0;
-    gap: 25px;
-}

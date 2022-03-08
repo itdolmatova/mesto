@@ -1,6 +1,7 @@
 .profile__add-button {
     display: flex;
     margin: 0;
+    padding: 0;
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 2px;
