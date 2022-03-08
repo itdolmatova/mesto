@@ -9,7 +9,7 @@
     color: #000000;
     margin: 0;
     padding: 25px 21px 31px;
-    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
