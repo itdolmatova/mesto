@@ -1,5 +1,3 @@
 .popup__error_visible {
-    display: flex;
-    visibility: hidden;
-    color: red;
+    opacity: 1;
 }
