@@ -55,7 +55,7 @@ function closeByEscape(evt){
 
 function openPopup(popup) {
   
-  .addEventListener('keydown', closeByEscape);
+  popup.addEventListener('keydown', closeByEscape);
   popup.classList.add('popup_opened');
 }
 
