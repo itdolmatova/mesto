@@ -1,4 +1,3 @@
-
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
@@ -12,8 +11,6 @@ const toggleButtonState = (validationParams, inputList, buttonElement) => {
         buttonElement.classList.remove(validationParams.inactiveButtonClass);
     }
 }
-
-
 
 const showInputError = (validationParams, formElement, inputElement, validationMessage) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -61,8 +58,6 @@ function enableValidation(validationParams) {
 
     formList.forEach((formElement) => { setEventListeners(validationParams, formElement) });
 }
-
-
 
 enableValidation({
     formSelector: '.popup__form',

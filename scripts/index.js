@@ -13,6 +13,8 @@ const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddPlace = document.querySelector('.popup_add-place');
 const popupImage = document.querySelector('.popup_image');
 
+const buttonSubmitPlace = popupAddPlace.querySelector('.popup__submit-button');
+
 const nameInput = popupEditProfile.querySelector('.popup__input_ctrl_name');
 const jobInput = popupEditProfile.querySelector('.popup__input_ctrl_job');
 
@@ -123,19 +125,27 @@ initialCards.forEach(function (item) {
   placeContainer.append(placeElement);
 });
 
+function initPopupProfileFields(){
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+}
+
+initPopupProfileFields();
+
+
 popupAddPlace.addEventListener('submit', handleAddPlaceFormSubmit);
 
 popupEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 buttonEditProfile.addEventListener('click', function () {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
+  initPopupProfileFields();
   openPopup(popupEditProfile);
 });
 
 buttonAddPlace.addEventListener('click', function () {
   placeInput.value = '';
   srcInput.value = '';
+  buttonSubmitPlace.classList.add('popup__button_disabled');
   openPopup(popupAddPlace);
 });
 
