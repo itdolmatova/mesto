@@ -50,18 +50,19 @@ const initialCards = [
 ];
 
 function closeByEscape(evt){
-  if (evt.key === 'Escape') closePopup(popupImage);
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }
 
 function openPopup(popup) {
-  
-  popup.addEventListener('keydown', closeByEscape);
+  document.addEventListener('keydown', closeByEscape);
   popup.classList.add('popup_opened');
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closeByEscape);
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 function handleProfileFormSubmit(evt) {
