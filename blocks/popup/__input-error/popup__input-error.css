@@ -7,4 +7,5 @@
     padding: 0;
     display: block;
     opacity: 0;
+    transition: opacity 0.5s;
 }
