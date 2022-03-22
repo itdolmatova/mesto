@@ -12,6 +12,7 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddPlace = document.querySelector('.popup_add-place');
 const popupImage = document.querySelector('.popup_image');
+const popupImagePhoto = popupImage.querySelector('.popup__image-photo');
 
 const buttonSubmitPlace = popupAddPlace.querySelector('.popup__submit-button');
 
@@ -86,7 +87,8 @@ function createPlace(photoValue, titleValue) {
 
   placeElementPhoto.addEventListener('click', function () {
     openPopup(popupImage);
-    popupImage.querySelector('.popup__image-photo').src = photoValue;
+    popupImagePhoto.src = photoValue;
+    popupImagePhoto.alt = titleValue;
     popupImage.querySelector('.popup__image-caption').textContent = titleValue;
   })
 
@@ -111,10 +113,10 @@ function handleAddPlaceFormSubmit(evt) {
 
 function setCloseListener(popupList) {
   popupList.forEach((popup) => {
-
-    popup.querySelector('.popup__close-button').addEventListener('click', function () { closePopup(popup) });
-
-    popup.addEventListener('click', function (evt) { if (evt.target === popup) closePopup(popup) });
+    popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button'))
+        closePopup(popup);
+    });
   });
 }
 
@@ -143,8 +145,7 @@ buttonEditProfile.addEventListener('click', function () {
 });
 
 buttonAddPlace.addEventListener('click', function () {
-  placeInput.value = '';
-  srcInput.value = '';
+  popupAddPlace.querySelector('.popup__form').reset();
   buttonSubmitPlace.classList.add('popup__button_disabled');
   openPopup(popupAddPlace);
 });

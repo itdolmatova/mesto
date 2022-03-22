@@ -3,3 +3,7 @@
     background: inherit;
     color: rgba(0, 0, 0, 0.2);
 }
+
+.popup__button_disabled:hover {
+    cursor: default;
+}
