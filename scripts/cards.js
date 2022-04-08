@@ -1,18 +1,12 @@
-import {
-    profile, profileTitle, profileSubtitle, placeContainer, placeTitle, placePhoto, buttonEditProfile, buttonAddPlace,
-    popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, buttonSubmitPlace, nameInput, jobInput, placeInput,
-    srcInput, placeTemplate, placeElementTemplate, initialCards
-} from './constants.js';
+import { placeContainer, buttonAddPlace, popupAddPlace, popupImage, popupImagePhoto, buttonSubmitPlace } from './constants.js';
 
-import{openPopupImage} from './index.js';
+import { openPopupImage } from './index.js';
 
 class Card {
     constructor(data, cardSelector) {
         this._photo = data.link;
         this._title = data.name;
         this._cardSelector = cardSelector;
-
-
     }
 
     _like() {
@@ -28,7 +22,7 @@ class Card {
 
         return cardElement;
     }
-    
+
 
     generateCard() {
         this._element = this._getTemplate();
@@ -39,7 +33,7 @@ class Card {
 
         const placeElementTitle = this._element.querySelector('.place__title');
         placeElementTitle.textContent = this._title;
-        placeElementTitle.alt = this._title;
+        placeElementPhoto.alt = this._title;
 
         return this._element;
     }
@@ -49,9 +43,9 @@ class Card {
         this._element.querySelector('.place__like').addEventListener('click', (evt) => {
             this._handleLikeButton(evt);
         });
-        
-        
-        this._element.querySelector('.place__delete-button').addEventListener('click',(evt) => {
+
+
+        this._element.querySelector('.place__delete-button').addEventListener('click', (evt) => {
             this._handleDeleteButton(evt);
         });
 
@@ -67,10 +61,10 @@ class Card {
         evt.target.classList.toggle('place__like_active');
     }
 
-    _handleDeleteButton (evt) {
+    _handleDeleteButton(evt) {
         evt.target.closest('.place').remove();
     }
 
 }
 
-export {Card};
+export { Card };
