@@ -1,4 +1,4 @@
-import { placeContainer, buttonAddPlace, popupAddPlace, popupImage, popupImagePhoto, buttonSubmitPlace } from './constants.js';
+import { popupImage, popupImagePhoto } from './constants.js';
 
 import { openPopupImage } from './index.js';
 
