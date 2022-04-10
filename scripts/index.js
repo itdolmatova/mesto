@@ -6,6 +6,7 @@ import {
   srcInput, placeTemplate, placeElementTemplate, initialCards
 } from './constants.js';
 
+import {FormValidator} from './formValidator.js';
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -70,7 +71,6 @@ function handleProfileFormSubmit(evt) {
 
 popupEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
-
 function initPopupProfileFields() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
@@ -84,7 +84,43 @@ buttonEditProfile.addEventListener('click', function () {
   openPopup(popupEditProfile);
 });
 
-/*версия отрисовки карточки без применения ООП
+/*прежняя функция из validate.js 
+function enableValidation(validationParams) {
+  const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
+
+  formList.forEach((formElement) => { setEventListeners(validationParams, formElement) });
+}
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}); */
+
+
+function enableValidation(validationParams) {
+  const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
+  const popupContainer = document.querySelector('.popup__container');
+
+  formList.forEach((formElement) => { 
+    const formValidator = new FormValidator (validationParams, formElement);
+    formValidator.enableValidation();
+  });
+};
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+});
+
+/*версия создания карточки без применения ООП
 function createPlace(photoValue, titleValue) {
   const placeElement = placeElementTemplate.cloneNode(true);
   const placeElementPhoto = placeElement.querySelector('.place__photo');
