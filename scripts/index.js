@@ -47,14 +47,6 @@ initialCards.forEach((item) => {
   placeContainer.append(cardElement);
 });
 
-/*
-initialCards.forEach((item) => {
-  const card = new Card(item, '#place-template', handleCardClick);
-  const cardElement = card.generateCard();
-  placeContainer.append(cardElement);
-});
-*/
-
 function setCloseListener(popupList) {
   popupList.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
@@ -73,8 +65,7 @@ buttonAddPlace.addEventListener('click', function () {
 
 function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
-  const card = new Card({link: srcInput.value, name:placeInput.value}, '#place-template', handleCardClick);
-  placeContainer.prepend(card.generateCard());
+  placeContainer.prepend(createCard({link: srcInput.value, name: placeInput.value}));
   closePopup(popupAddPlace);
 }
 
@@ -104,7 +95,6 @@ buttonEditProfile.addEventListener('click', function () {
 
 function enableValidation(validationParams) {
   const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
-  const popupContainer = document.querySelector('.popup__container');
 
   formList.forEach((formElement) => { 
     const formValidator = new FormValidator (validationParams, formElement);
