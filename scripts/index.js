@@ -35,6 +35,10 @@ function handleCardClick(name, link) {
   openPopupImage();
 };
 
+/* 
+
+*/
+
 initialCards.forEach((item) => {
   const card = new Card(item, '#place-template', handleCardClick);
   const cardElement = card.generateCard();
@@ -62,7 +66,6 @@ buttonAddPlace.addEventListener('click', function () {
 function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
   const card = new Card({link: srcInput.value, name:placeInput.value}, '#place-template', handleCardClick);
-  //const placeElement = createPlace(srcInput.value, placeInput.value);
   placeContainer.prepend(card.generateCard());
   closePopup(popupAddPlace);
 }
@@ -91,23 +94,6 @@ buttonEditProfile.addEventListener('click', function () {
   openPopup(popupEditProfile);
 });
 
-/*прежняя функция из validate.js 
-function enableValidation(validationParams) {
-  const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
-
-  formList.forEach((formElement) => { setEventListeners(validationParams, formElement) });
-}
-
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}); */
-
-
 function enableValidation(validationParams) {
   const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
   const popupContainer = document.querySelector('.popup__container');
@@ -126,26 +112,3 @@ enableValidation({
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 });
-
-/*версия создания карточки без применения ООП
-function createPlace(photoValue, titleValue) {
-  const placeElement = placeElementTemplate.cloneNode(true);
-  const placeElementPhoto = placeElement.querySelector('.place__photo');
-  const buttonLike = placeElement.querySelector('.place__like');
-  const buttonDelete = placeElement.querySelector('.place__delete-button');
-
-  placeElementPhoto.src = photoValue;
-  placeElement.querySelector('.place__title').textContent = titleValue;
-  placeElementPhoto.alt = titleValue;
-  
-  buttonLike.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('place__like_active');
-  });
-  
-  buttonDelete.addEventListener('click', function (evt) {
-    const listItem = buttonDelete.closest('.place');
-    listItem.remove();
-  });
-  
-  return placeElement;
-}*/
