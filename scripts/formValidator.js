@@ -69,9 +69,4 @@ export class FormValidator {
             submitButton.disabled = false;
         }
     }
-
-
-
-
-
 }
