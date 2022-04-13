@@ -47,12 +47,12 @@ export class FormValidator {
     
         this._toggleButtonState(inputList, buttonElement);
 
-        const validator = this;
+        //const validator = this;
         inputList.forEach((inputElement) => {
-            inputElement.addEventListener('input', function (evt) {
+            inputElement.addEventListener('input', (evt) => {
                 evt.preventDefault();
-                validator._checkInputValidity(inputElement);
-                validator._toggleButtonState(inputList, buttonElement);
+                this._checkInputValidity(inputElement);
+                this._toggleButtonState(inputList, buttonElement);
             });
         });
     }

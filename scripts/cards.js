@@ -1,12 +1,11 @@
-import { popupImage, popupImagePhoto } from './constants.js';
-
-import { openPopupImage } from './index.js';
+import {placePhoto} from './constants.js';
 
 class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, handleCardClick) {
         this._photo = data.link;
         this._title = data.name;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _like() {
@@ -50,11 +49,9 @@ class Card {
         });
 
         this._element.querySelector('.place__photo').addEventListener('click', () => {
-            popupImagePhoto.src = this._photo;
-            popupImagePhoto.alt = this._title;
-            popupImage.querySelector('.popup__image-caption').textContent = this._title;
-            openPopupImage();
-        });
+            this._handleCardClick(this._title, this._photo);
+          });
+      
     }
 
     _handleLikeButton(evt) {

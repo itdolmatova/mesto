@@ -1,12 +1,12 @@
-import {Card} from './cards.js';
+import {Card} from './Cards.js';
 
 import {
   profile, profileTitle, profileSubtitle, placeContainer, placeTitle, placePhoto, buttonEditProfile, buttonAddPlace,
-  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, buttonSubmitPlace, nameInput, jobInput, placeInput,
+  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, buttonSubmitPlace, nameInput, jobInput, placeInput,
   srcInput, placeTemplate, placeElementTemplate, initialCards
 } from './constants.js';
 
-import {FormValidator} from './formValidator.js';
+import {FormValidator} from './FormValidator.js';
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -28,8 +28,15 @@ export function openPopupImage() {
   openPopup(popupImage);
 }
 
+function handleCardClick(name, link) {
+  popupImagePhoto.src = link;
+  popupImagePhoto.alt = name;
+  popupImageCaption.textContent = name;
+  openPopupImage();
+};
+
 initialCards.forEach((item) => {
-  const card = new Card(item, '#place-template');
+  const card = new Card(item, '#place-template', handleCardClick);
   const cardElement = card.generateCard();
   placeContainer.append(cardElement);
 });
@@ -37,7 +44,7 @@ initialCards.forEach((item) => {
 
 function setCloseListener(popupList) {
   popupList.forEach((popup) => {
-    popup.addEventListener('click', (evt) => {
+    popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button'))
       closePopup(popup);
     });
@@ -54,7 +61,7 @@ buttonAddPlace.addEventListener('click', function () {
 
 function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
-  const card = new Card({link: srcInput.value, name:placeInput.value}, '#place-template');
+  const card = new Card({link: srcInput.value, name:placeInput.value}, '#place-template', handleCardClick);
   //const placeElement = createPlace(srcInput.value, placeInput.value);
   placeContainer.prepend(card.generateCard());
   closePopup(popupAddPlace);
