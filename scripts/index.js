@@ -35,16 +35,25 @@ function handleCardClick(name, link) {
   openPopupImage();
 };
 
-/* 
 
-*/
+function createCard(item) {
+  const card = new Card(item, '#place-template', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+};
 
+initialCards.forEach((item) => {
+  const cardElement = createCard(item)
+  placeContainer.append(cardElement);
+});
+
+/*
 initialCards.forEach((item) => {
   const card = new Card(item, '#place-template', handleCardClick);
   const cardElement = card.generateCard();
   placeContainer.append(cardElement);
 });
-
+*/
 
 function setCloseListener(popupList) {
   popupList.forEach((popup) => {
