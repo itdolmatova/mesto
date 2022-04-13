@@ -9,14 +9,12 @@ export class FormValidator {
         this._formElement = formElement;
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
-
     }
 
     enableValidation() {
         //включает валидацию формы
         this._setEventListeners();
     }
-    
     
     _showInputError(inputElement, validationMessage){
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);

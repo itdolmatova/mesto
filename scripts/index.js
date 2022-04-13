@@ -59,7 +59,6 @@ setCloseListener(popupList);
 
 buttonAddPlace.addEventListener('click', function () {
   popupAddPlace.querySelector('.popup__form').reset();
-  buttonSubmitPlace.classList.add('popup__button_disabled');
   openPopup(popupAddPlace);
 });
 
