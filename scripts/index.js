@@ -1,4 +1,4 @@
-import {Card} from './Cards.js';
+import {Card} from './Card.js';
 
 import {
   profile, profileTitle, profileSubtitle, placeContainer, placeTitle, placePhoto, buttonEditProfile, buttonAddPlace,

@@ -1,5 +1,3 @@
-import {placePhoto} from './constants.js';
-
 class Card {
     constructor(data, cardSelector, handleCardClick) {
         this._photo = data.link;
