@@ -1,9 +1,9 @@
 import {Card} from './Card.js';
 
 import {
-  profile, profileTitle, profileSubtitle, placeContainer, placeTitle, placePhoto, buttonEditProfile, buttonAddPlace,
-  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, buttonSubmitPlace, nameInput, jobInput, placeInput,
-  srcInput, placeTemplate, placeElementTemplate, initialCards
+  profileTitle, profileSubtitle, placeContainer, buttonEditProfile, buttonAddPlace,
+  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, nameInput, 
+  jobInput, placeInput, srcInput, initialCards, addPlaceForm, editProfileForm
 } from './constants.js';
 
 import {FormValidator} from './FormValidator.js';
@@ -58,8 +58,11 @@ function setCloseListener(popupList) {
 
 setCloseListener(popupList);
 
+let addPlaceFormValidator;
+
 buttonAddPlace.addEventListener('click', function () {
-  popupAddPlace.querySelector('.popup__form').reset();
+  //popupAddPlace.querySelector('.popup__form').reset();
+  addPlaceFormValidator.resetValidation();
   openPopup(popupAddPlace);
 });
 
@@ -87,19 +90,20 @@ function initPopupProfileFields() {
 
 initPopupProfileFields();
 
+let editProfileFormValidator;
 
 buttonEditProfile.addEventListener('click', function () {
   initPopupProfileFields();
+  editProfileFormValidator.resetValidation();
   openPopup(popupEditProfile);
 });
 
 function enableValidation(validationParams) {
-  const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
+  editProfileFormValidator = new FormValidator (validationParams, editProfileForm);
+  editProfileFormValidator.enableValidation();
 
-  formList.forEach((formElement) => { 
-    const formValidator = new FormValidator (validationParams, formElement);
-    formValidator.enableValidation();
-  });
+  addPlaceFormValidator = new FormValidator(validationParams, addPlaceForm);
+  addPlaceFormValidator.enableValidation();
 };
 
 enableValidation({

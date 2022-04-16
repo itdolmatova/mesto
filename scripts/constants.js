@@ -16,6 +16,8 @@ const popupImagePhoto = popupImage.querySelector('.popup__image-photo');
 const popupImageCaption = popupImage.querySelector('.popup__image-caption');
 
 const buttonSubmitPlace = popupAddPlace.querySelector('.popup__submit-button');
+const addPlaceForm = popupAddPlace.querySelector('.popup__form');
+const editProfileForm = popupEditProfile.querySelector('.popup__form');
 
 const nameInput = popupEditProfile.querySelector('.popup__input_ctrl_name');
 const jobInput = popupEditProfile.querySelector('.popup__input_ctrl_job');
@@ -55,4 +57,4 @@ const initialCards = [
 
 export {profile, profileTitle, profileSubtitle, placeContainer, placeTitle, placePhoto, buttonEditProfile, 
     buttonAddPlace, popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, buttonSubmitPlace, 
-    nameInput, jobInput, placeInput, srcInput, placeTemplate, placeElementTemplate, initialCards};
+    nameInput, jobInput, placeInput, srcInput, placeTemplate, placeElementTemplate, initialCards, addPlaceForm, editProfileForm};
