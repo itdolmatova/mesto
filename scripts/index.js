@@ -96,6 +96,8 @@ function initPopupProfileFields() {
 
 initPopupProfileFields();
 
+let editProfileFormValidator;
+
 buttonEditProfile.addEventListener('click', function () {
   initPopupProfileFields();
   editProfileFormValidator.resetValidation();
