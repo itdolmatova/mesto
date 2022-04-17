@@ -8,6 +8,9 @@ import {
 
 import {FormValidator} from './FormValidator.js';
 
+const addPlaceFormValidator;
+const editProfileFormValidator;
+
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
@@ -58,8 +61,6 @@ function setCloseListener(popupList) {
 
 setCloseListener(popupList);
 
-let addPlaceFormValidator;
-
 buttonAddPlace.addEventListener('click', function () {
   //popupAddPlace.querySelector('.popup__form').reset();
   addPlaceFormValidator.resetValidation();
@@ -89,8 +90,6 @@ function initPopupProfileFields() {
 }
 
 initPopupProfileFields();
-
-let editProfileFormValidator;
 
 buttonEditProfile.addEventListener('click', function () {
   initPopupProfileFields();
