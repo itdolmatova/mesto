@@ -117,5 +117,3 @@ function enableValidation(validationParams) {
 };
 
 enableValidation(validationParams);
-
-console.log(formValidators);
