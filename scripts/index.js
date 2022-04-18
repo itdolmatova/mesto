@@ -75,6 +75,8 @@ buttonAddPlace.addEventListener('click', function () {
 function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
   placeContainer.prepend(createCard({link: srcInput.value, name: placeInput.value}));
+  placeInput.value = '';
+  srcInput.value = '';
   closePopup(popupAddPlace);
 }
 
