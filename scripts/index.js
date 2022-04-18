@@ -8,6 +8,19 @@ import {
 
 import {FormValidator} from './FormValidator.js';
 
+const validationParams = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
+const addPlaceFormValidator = new FormValidator(validationParams, addPlaceForm);
+const editProfileFormValidator = new FormValidator (validationParams, editProfileForm);
+
+
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
@@ -59,15 +72,6 @@ function setCloseListener(popupList) {
 setCloseListener(popupList);
 
 buttonAddPlace.addEventListener('click', function () {
-  //popupAddPlace.querySelector('.popup__form').reset();
-  addPlaceFormValidator.resetValidation();
-  openPopup(popupAddPlace);
-});
-
-let addPlaceFormValidator;
-
-buttonAddPlace.addEventListener('click', function () {
-  //popupAddPlace.querySelector('.popup__form').reset();
   addPlaceFormValidator.resetValidation();
   openPopup(popupAddPlace);
 });
@@ -98,27 +102,15 @@ function initPopupProfileFields() {
 
 initPopupProfileFields();
 
-let editProfileFormValidator;
-
 buttonEditProfile.addEventListener('click', function () {
   initPopupProfileFields();
   editProfileFormValidator.resetValidation();
   openPopup(popupEditProfile);
 });
 
-function enableValidation(validationParams) {
-  editProfileFormValidator = new FormValidator (validationParams, editProfileForm);
+function enableValidation() {
   editProfileFormValidator.enableValidation();
-
-  addPlaceFormValidator = new FormValidator(validationParams, addPlaceForm);
   addPlaceFormValidator.enableValidation();
 };
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
+enableValidation();
