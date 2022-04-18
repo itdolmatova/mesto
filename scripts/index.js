@@ -1,12 +1,14 @@
-import {Card} from './Card.js';
+import { Card } from './Card.js';
 
 import {
   profileTitle, profileSubtitle, placeContainer, buttonEditProfile, buttonAddPlace,
-  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, nameInput, 
+  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, nameInput,
   jobInput, placeInput, srcInput, initialCards, addPlaceForm, editProfileForm
 } from './constants.js';
 
-import {FormValidator} from './FormValidator.js';
+import { FormValidator } from './FormValidator.js';
+
+const formValidators = {};
 
 const validationParams = {
   formSelector: '.popup__form',
@@ -16,10 +18,6 @@ const validationParams = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-
-const addPlaceFormValidator = new FormValidator(validationParams, addPlaceForm);
-const editProfileFormValidator = new FormValidator (validationParams, editProfileForm);
-
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -64,7 +62,7 @@ function setCloseListener(popupList) {
   popupList.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button'))
-      closePopup(popup);
+        closePopup(popup);
     });
   });
 }
@@ -72,13 +70,13 @@ function setCloseListener(popupList) {
 setCloseListener(popupList);
 
 buttonAddPlace.addEventListener('click', function () {
-  addPlaceFormValidator.resetValidation();
+  formValidators.popup__form_card.resetValidation();
   openPopup(popupAddPlace);
 });
 
 function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
-  placeContainer.prepend(createCard({link: srcInput.value, name: placeInput.value}));
+  placeContainer.prepend(createCard({ link: srcInput.value, name: placeInput.value }));
   placeInput.value = '';
   srcInput.value = '';
   closePopup(popupAddPlace);
@@ -104,13 +102,20 @@ initPopupProfileFields();
 
 buttonEditProfile.addEventListener('click', function () {
   initPopupProfileFields();
-  editProfileFormValidator.resetValidation();
+  formValidators.popup__form_profile.resetValidation();
   openPopup(popupEditProfile);
 });
 
-function enableValidation() {
-  editProfileFormValidator.enableValidation();
-  addPlaceFormValidator.enableValidation();
+function enableValidation(validationParams) {
+  const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(validationParams, formElement);
+    const formName = formElement.getAttribute('name');
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
 };
 
-enableValidation();
+enableValidation(validationParams);
+
+console.log(formValidators);
