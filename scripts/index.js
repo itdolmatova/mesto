@@ -7,6 +7,7 @@ import {
 } from './constants.js';
 
 import { FormValidator } from './FormValidator.js';
+import Section from './Section.js';
 
 const formValidators = {};
 
@@ -53,10 +54,14 @@ function createCard(item) {
   return cardElement;
 };
 
-initialCards.forEach((item) => {
-  const cardElement = createCard(item)
-  placeContainer.append(cardElement);
-});
+const cardsList = new Section({
+  items: initialCards,
+  renderer: createCard
+}, 
+  '.places__list'
+);
+
+cardsList.renderItems();
 
 function setCloseListener(popupList) {
   popupList.forEach((popup) => {
@@ -76,7 +81,7 @@ buttonAddPlace.addEventListener('click', function () {
 
 function handleAddPlaceFormSubmit(evt) {
   evt.preventDefault();
-  placeContainer.prepend(createCard({ link: srcInput.value, name: placeInput.value }));
+  cardsList.addItem(createCard({ link: srcInput.value, name: placeInput.value }));
   placeInput.value = '';
   srcInput.value = '';
   closePopup(popupAddPlace);
