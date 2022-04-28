@@ -8,6 +8,7 @@ import {
 
 import { FormValidator } from './FormValidator.js';
 import Section from './Section.js';
+import Popup from './Popup.js';
 
 const formValidators = {};
 
@@ -19,7 +20,7 @@ const validationParams = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-
+/*
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
@@ -34,10 +35,10 @@ function closePopup(popup) {
 function openPopup(popup) {
   document.addEventListener('keydown', closeByEscape);
   popup.classList.add('popup_opened');
-}
+}*/
 
 export function openPopupImage() {
-  openPopup(popupImage);
+  popup.open(popupImage);
 }
 
 function handleCardClick(name, link) {
@@ -63,20 +64,22 @@ const cardsList = new Section({
 
 cardsList.renderItems();
 
+/*
 function setCloseListener(popupList) {
   popupList.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button'))
-        closePopup(popup);
+        popup.close(popup);
     });
   });
-}
+}*/
 
-setCloseListener(popupList);
+const popup = new Popup ('.popup');
+popup.setEventListeners();
 
 buttonAddPlace.addEventListener('click', function () {
   formValidators.popup__form_card.resetValidation();
-  openPopup(popupAddPlace);
+  popup.open();
 });
 
 function handleAddPlaceFormSubmit(evt) {
@@ -84,7 +87,7 @@ function handleAddPlaceFormSubmit(evt) {
   cardsList.addItem(createCard({ link: srcInput.value, name: placeInput.value }));
   placeInput.value = '';
   srcInput.value = '';
-  closePopup(popupAddPlace);
+  popup.close();
 }
 
 popupAddPlace.addEventListener('submit', handleAddPlaceFormSubmit);
@@ -93,7 +96,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  closePopup(popupEditProfile);
+  popup.close();
 }
 
 popupEditProfile.addEventListener('submit', handleProfileFormSubmit);
@@ -108,7 +111,7 @@ initPopupProfileFields();
 buttonEditProfile.addEventListener('click', function () {
   initPopupProfileFields();
   formValidators.popup__form_profile.resetValidation();
-  openPopup(popupEditProfile);
+  popup.open(popupEditProfile);
 });
 
 function enableValidation(validationParams) {
