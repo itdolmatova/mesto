@@ -9,6 +9,7 @@ import {
 import { FormValidator } from './FormValidator.js';
 import Section from './Section.js';
 import Popup from './Popup.js';
+import PopupWithImage from './PopupWithImage.js';
 
 const formValidators = {};
 
@@ -38,16 +39,18 @@ function openPopup(popup) {
 }*/
 
 export function openPopupImage() {
-  popup.open(popupImage);
+  popup.open();
 }
 
-function handleCardClick(name, link) {
-  popupImagePhoto.src = link;
-  popupImagePhoto.alt = name;
-  popupImageCaption.textContent = name;
-  openPopupImage();
+function handleCardClick(title, photo) {
+  const popupWithImage = new PopupWithImage ({
+    link: photo,
+    name: title,
+    alt: title
+  }, '.popup_image');
+  popupWithImage.setEventListeners();
+  popupWithImage.open();
 };
-
 
 function createCard(item) {
   const card = new Card(item, '#place-template', handleCardClick);
