@@ -2,14 +2,15 @@ import { Card } from './Card.js';
 
 import {
   profileTitle, profileSubtitle, placeContainer, buttonEditProfile, buttonAddPlace,
-  popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, nameInput,
-  jobInput, placeInput, srcInput, initialCards, addPlaceForm, editProfileForm
+  popupList, popupEditProfile, popupImage, popupImagePhoto, popupImageCaption, nameInput,
+  jobInput, initialCards, addPlaceForm, editProfileForm
 } from './constants.js';
 
 import { FormValidator } from './FormValidator.js';
 import Section from './Section.js';
 import Popup from './Popup.js';
 import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
 
 const formValidators = {};
 
@@ -43,7 +44,7 @@ export function openPopupImage() {
 }
 
 function handleCardClick(title, photo) {
-  const popupWithImage = new PopupWithImage ({
+  const popupWithImage = new PopupWithImage({
     link: photo,
     name: title,
     alt: title
@@ -61,7 +62,7 @@ function createCard(item) {
 const cardsList = new Section({
   items: initialCards,
   renderer: createCard
-}, 
+},
   '.places__list'
 );
 
@@ -77,23 +78,20 @@ function setCloseListener(popupList) {
   });
 }*/
 
-const popup = new Popup ('.popup');
-popup.setEventListeners();
+function handleAddPlaceFormSubmit( values) {
+  cardsList.addItem(createCard({ link: values.src, name: values.name }));
+}
+
+const popupAddPlace = new PopupWithForm('.popup_add-place', handleAddPlaceFormSubmit);
+popupAddPlace.setEventListeners();
 
 buttonAddPlace.addEventListener('click', function () {
   formValidators.popup__form_card.resetValidation();
-  popup.open();
+  popupAddPlace.open();
 });
 
-function handleAddPlaceFormSubmit(evt) {
-  evt.preventDefault();
-  cardsList.addItem(createCard({ link: srcInput.value, name: placeInput.value }));
-  placeInput.value = '';
-  srcInput.value = '';
-  popup.close();
-}
 
-popupAddPlace.addEventListener('submit', handleAddPlaceFormSubmit);
+
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
