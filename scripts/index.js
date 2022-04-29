@@ -2,13 +2,12 @@ import { Card } from './Card.js';
 
 import {
   profileTitle, profileSubtitle, placeContainer, buttonEditProfile, buttonAddPlace,
-  popupList, popupEditProfile, popupImage, popupImagePhoto, popupImageCaption, nameInput,
+  popupList, popupImage, popupImagePhoto, popupImageCaption, nameInput,
   jobInput, initialCards, addPlaceForm, editProfileForm
 } from './constants.js';
 
 import { FormValidator } from './FormValidator.js';
 import Section from './Section.js';
-import Popup from './Popup.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
 
@@ -22,22 +21,6 @@ const validationParams = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-/*
-function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape);
-}
-
-function openPopup(popup) {
-  document.addEventListener('keydown', closeByEscape);
-  popup.classList.add('popup_opened');
-}*/
 
 export function openPopupImage() {
   popup.open();
@@ -68,17 +51,7 @@ const cardsList = new Section({
 
 cardsList.renderItems();
 
-/*
-function setCloseListener(popupList) {
-  popupList.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button'))
-        popup.close(popup);
-    });
-  });
-}*/
-
-function handleAddPlaceFormSubmit( values) {
+function handleAddPlaceFormSubmit(values) {
   cardsList.addItem(createCard({ link: values.src, name: values.name }));
 }
 
@@ -90,10 +63,27 @@ buttonAddPlace.addEventListener('click', function () {
   popupAddPlace.open();
 });
 
+function handleProfileFormSubmit(values) {
+  profileTitle.textContent = values.name;
+  profileSubtitle.textContent = values.job;
+}
 
+const popupEditProfile = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
 
+popupEditProfile.setEventListeners();
 
-function handleProfileFormSubmit(evt) {
+function initPopupProfileFields(values) {
+  values.name = profileTitle.textContent;
+  values.job = profileSubtitle.textContent;
+}
+
+buttonEditProfile.addEventListener('click', function (values) {
+  initPopupProfileFields(values);
+  formValidators.popup__form_profile.resetValidation();
+  popupEditProfile.open();
+});
+
+/*function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
@@ -114,6 +104,7 @@ buttonEditProfile.addEventListener('click', function () {
   formValidators.popup__form_profile.resetValidation();
   popup.open(popupEditProfile);
 });
+*/
 
 function enableValidation(validationParams) {
   const formList = Array.from(document.querySelectorAll(validationParams.formSelector));
