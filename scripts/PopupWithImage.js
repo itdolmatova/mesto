@@ -1,9 +1,6 @@
 import Popup from './Popup.js';
 
-import {
-    profileTitle, profileSubtitle, placeContainer, buttonEditProfile, buttonAddPlace,
-    popupList, popupEditProfile, popupAddPlace, popupImage, popupImagePhoto, popupImageCaption, nameInput,
-    jobInput, placeInput, srcInput, initialCards, addPlaceForm, editProfileForm
+import { popupImagePhoto, popupImageCaption
 } from './constants.js';
 
 export default class PopupWithImage extends Popup {

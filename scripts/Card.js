@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
     constructor(data, cardSelector, handleCardClick) {
         this._photo = data.link;
         this._title = data.name;
@@ -35,7 +35,6 @@ class Card {
         return this._element;
     }
 
-
     _setEventListeners() {
         this._element.querySelector('.place__like').addEventListener('click', (evt) => {
             this._handleLikeButton(evt);
@@ -61,5 +60,3 @@ class Card {
     }
 
 }
-
-export { Card };

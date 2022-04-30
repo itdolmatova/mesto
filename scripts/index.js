@@ -1,15 +1,12 @@
-import { Card } from './Card.js';
+import Card from './Card.js';
 
-import {
-  profileTitle, profileSubtitle, placeContainer, buttonEditProfile, buttonAddPlace,
-  popupList, popupImage, popupImagePhoto, popupImageCaption, nameInput,
-  jobInput, initialCards, addPlaceForm, editProfileForm
-} from './constants.js';
+import { buttonEditProfile, buttonAddPlace, initialCards } from './constants.js';
 
-import { FormValidator } from './FormValidator.js';
+import FormValidator from './FormValidator.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
 
 const formValidators = {};
 
@@ -63,24 +60,20 @@ buttonAddPlace.addEventListener('click', function () {
   popupAddPlace.open();
 });
 
+const profileInfo = new UserInfo('.profile__title', '.profile__subtitle');
+
 function handleProfileFormSubmit(values) {
-  profileTitle.textContent = values.name;
-  profileSubtitle.textContent = values.job;
+  profileInfo.setUserInfo(values);
 }
 
 const popupEditProfile = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
 
 popupEditProfile.setEventListeners();
 
-function initPopupProfileFields(values) {
-  values.name = profileTitle.textContent;
-  values.job = profileSubtitle.textContent;
-}
-
-buttonEditProfile.addEventListener('click', function (values) {
-  initPopupProfileFields(values);
+buttonEditProfile.addEventListener('click', function () {
   formValidators.popup__form_profile.resetValidation();
-  popupEditProfile.open();
+  const values = profileInfo.getUserInfo();
+  popupEditProfile.open(values);
 });
 
 /*function handleProfileFormSubmit(evt) {
