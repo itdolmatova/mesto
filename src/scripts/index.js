@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import Card from './Card.js';
 
 import { buttonEditProfile, buttonAddPlace, initialCards } from './constants.js';
