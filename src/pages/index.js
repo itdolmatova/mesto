@@ -21,18 +21,11 @@ const validationParams = {
   errorClass: 'popup__error_visible'
 };
 
-export function openPopupImage() {
-  popup.open();
-}
+const popupWithImage = new PopupWithImage('.popup_image');
+popupWithImage.setEventListeners();
 
-function handleCardClick(title, photo) {
-  const popupWithImage = new PopupWithImage({
-    link: photo,
-    name: title,
-    alt: title
-  }, '.popup_image');
-  popupWithImage.setEventListeners();
-  popupWithImage.open();
+function handleCardClick(name, link) {
+  popupWithImage.open(name, link);
 };
 
 function createCard(item) {

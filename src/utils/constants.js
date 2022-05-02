@@ -1,9 +1,7 @@
 const profile =  document.querySelector('.profile');
 const buttonEditProfile = profile.querySelector('.profile__edit-button');
 const buttonAddPlace = profile.querySelector('.profile__add-button');
-const popupImage = document.querySelector('.popup_image');
-const popupImagePhoto = popupImage.querySelector('.popup__image-photo');
-const popupImageCaption = popupImage.querySelector('.popup__image-caption');
+
 
 const initialCards = [
   {
@@ -33,6 +31,5 @@ const initialCards = [
 ];
 
 export {
-  buttonEditProfile, buttonAddPlace, popupImage, popupImagePhoto,
-  popupImageCaption, initialCards
+  buttonEditProfile, buttonAddPlace, initialCards
 };
