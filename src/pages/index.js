@@ -9,6 +9,15 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
+
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
+    headers: {
+      authorization: '7d861178-920f-471c-bb6e-3ca53a05f255',
+      'Content-Type': 'application/json'
+    }
+  });
 
 const popupWithImage = new PopupWithImage('.popup_image');
 popupWithImage.setEventListeners();
@@ -44,7 +53,10 @@ buttonAddPlace.addEventListener('click', function () {
   popupAddPlace.open();
 });
 
-const profileInfo = new UserInfo('.profile__title', '.profile__subtitle');
+const profileInfo = new UserInfo('.profile__title', '.profile__subtitle', '.profile__avatar');
+
+api.getUserInfo().then(res=> profileInfo.setUserInfo({name: res.name, job: res.about, avatar: res.avatar}));
+
 
 function handleProfileFormSubmit(values) {
   profileInfo.setUserInfo(values);
