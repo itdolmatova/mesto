@@ -2,7 +2,7 @@ import '../pages/index.css';
 
 import Card from '../components/Card.js';
 
-import { buttonEditProfile, buttonAddPlace, initialCards } from '../utils/constants.js';
+import { buttonEditProfile, buttonAddPlace } from '../utils/constants.js';
 
 import FormValidator from '../components/formValidator.js';
 import Section from '../components/Section.js';
@@ -32,17 +32,29 @@ function createCard(item) {
   return cardElement;
 };
 
-const cardsList = new Section({
-  items: initialCards,
-  renderer: createCard
-},
-  '.places__list'
-);
 
-cardsList.renderItems();
+
+const cardsListPromise = api.getCards().then(initialCards => {
+   const cardsList = new Section({
+    items: initialCards,
+    renderer: createCard
+  },
+    '.places__list'
+  );
+  
+  cardsList.renderItems();
+  return cardsList;
+});
+
+
 
 function handleAddPlaceFormSubmit(values) {
-  cardsList.addItem(createCard({ link: values.src, name: values.name }));
+  cardsListPromise.then(cardsList => {
+      api.createCard(values.name, values.link);
+
+  }
+    //cardsList.addItem(createCard({ link: values.src, name: values.name }))
+    );
 }
 
 const popupAddPlace = new PopupWithForm('.popup_add-place', handleAddPlaceFormSubmit);

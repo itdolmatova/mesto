@@ -21,7 +21,7 @@ export default class Api {
 
     getCards() {
         return fetch(this._baseUrl + '/cards', {
-            headers: this.headers
+            headers: this._headers
         })
             .then(res => {
               if (res.ok) {
@@ -34,6 +34,16 @@ export default class Api {
             });
     }
 
+    createCard(name, link) {
+        return fetch(xthis._baseUrl + '/cards', {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: name,  
+                link: link
+            })
+        });
+    }
 
 
     // другие методы работы с API

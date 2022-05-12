@@ -1,11 +1,12 @@
 .places__list {
     display: grid;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
+    justify-content: stretch;
     /*grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));*/
-    grid-template-columns: repeat(3, 282px);
+    grid-template-columns: repeat(3, minmax(282px, 1fr));
     row-gap: 20px;
-    column-gap: 17px;
+    column-gap: 18px;
     list-style-type: none;
     /*max-width: 1280px;*/
 }
