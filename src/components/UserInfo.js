@@ -9,6 +9,7 @@ export default class UserInfo {
         const userInfo = {};
         userInfo.name = this._nameUser.textContent;
         userInfo.job = this._jobUser.textContent;
+        userInfo._id = this._id;
         return userInfo;
     }
 
@@ -16,5 +17,6 @@ export default class UserInfo {
         this._nameUser.textContent = userInfo.name;
         this._jobUser.textContent = userInfo.job;
         this._avatar.src = userInfo.avatar;
+        this._id = userInfo._id;
     }
 }

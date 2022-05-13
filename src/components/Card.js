@@ -1,9 +1,12 @@
 export default class Card {
-    constructor(data, cardSelector, handleCardClick) {
+    constructor(data, cardSelector, handleCardClick, isOwner) {
         this._photo = data.link;
         this._title = data.name;
+        this._id = data._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
+        this._isOwner = isOwner;
+        //this._popupConfirm = ...
     }
 
     _like() {
@@ -24,6 +27,10 @@ export default class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._likeButton = this._element.querySelector('.place__like');
+        this._deleteButton = this._element.querySelector('.place__delete-button'); 
+        if (!this._isOwner) {
+            this._deleteButton.remove();
+        }
         
         this._setEventListeners();
 
@@ -43,7 +50,7 @@ export default class Card {
         });
 
 
-        this._element.querySelector('.place__delete-button').addEventListener('click', (evt) => {
+        this._deleteButton.addEventListener('click', (evt) => {
             this._handleDeleteButton(evt);
         });
 
@@ -58,8 +65,12 @@ export default class Card {
     }
 
     _handleDeleteButton(evt) {
-        this._element.remove();
-        this._element = null;
+        this._popupConfirm.setListener(()=>{
+            this._element.remove();
+            this._element = null;
+        })
+        this._popupConfirm.open();
+
     }
 
 }

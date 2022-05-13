@@ -4,45 +4,39 @@ export default class Api {
         this._headers = options.headers;
     }
 
+    _resolver = (res) => {
+        if (res.ok) {
+            const resJson = res.json();
+            console.log(resJson);
+            return resJson;
+        }
+
+        return Promise.reject(`Ошибка: ${res.status}`);
+    };
+
     getUserInfo() {
         return fetch(this._baseUrl + '/users/me', {
             headers: this._headers
         })
-            .then(res => {
-                if (res.ok) {
-                    const resJson = res.json();
-                    console.log(resJson);
-                    return resJson;
-                }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            .then(this._resolver);
     }
 
     getCards() {
         return fetch(this._baseUrl + '/cards', {
             headers: this._headers
         })
-            .then(res => {
-              if (res.ok) {
-                const resJson = res.json();
-                console.log(resJson);
-                return resJson;
-            }
-
-                return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            .then(this._resolver);
     }
 
-    createCard(name, link) {
-        return fetch(xthis._baseUrl + '/cards', {
+    postCard(name, link) {
+        return fetch(this._baseUrl + '/cards', {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                name: name,  
+                name: name,
                 link: link
             })
-        });
+        }).then(this._resolver);
     }
 
 
