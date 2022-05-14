@@ -1,14 +1,16 @@
 
 export default class Card {
-    constructor(data, cardSelector, handleCardClick, isOwner, popupConfirm, api) {
+    constructor(data, cardSelector, handleCardClick, profileId, popupConfirm, api) {
         this._photo = data.link;
         this._title = data.name;
+        this._likes = data.likes;
         this._id = data._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
-        this._isOwner = isOwner;
+        this._isOwner = profileId === data.owner._id;
         this._popupConfirm = popupConfirm;
         this._api = api;
+        this._profileId = profileId;
     }
 
     _like() {
@@ -33,8 +35,14 @@ export default class Card {
         if (!this._isOwner) {
             this._deleteButton.remove();
         }
-        
+        this._likesCounter = this._element.querySelector('.place__likesCounter');
+
         this._setEventListeners();
+        
+        if (this._isLikedByMe()) {
+            this._likeButton.classList.add('place__like_active');
+        }
+        this._likesCounter.textContent = this._likes.length;
 
         const placeElementPhoto = this._element.querySelector('.place__photo');
         placeElementPhoto.src = this._photo;
@@ -62,8 +70,25 @@ export default class Card {
       
     }
 
+    _isLikedByMe(){
+        return this._likes.some(e => e._id === this._profileId);
+    }
+
+
     _handleLikeButton(evt) {
-        this._likeButton.classList.toggle('place__like_active');
+        if (this._isLikedByMe()) {
+            this._api.deleteLike(this._id).then(resJson => {
+                this._likes = resJson.likes;
+                this._likesCounter.textContent = this._likes.length;
+                this._likeButton.classList.remove('place__like_active');
+            });
+        } else {
+            this._api.setLike(this._id).then(resJson => {
+                this._likes = resJson.likes;
+                this._likesCounter.textContent = this._likes.length;
+                this._likeButton.classList.add('place__like_active');    
+            })
+        }
     }
 
     _handleDeleteButton(evt) {

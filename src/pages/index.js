@@ -84,8 +84,7 @@ function handleCardClick(name, link) {
 };
 
 function createCard(item) {
-  const isOwner = profileInfo._id === item.owner._id;
-  const card = new Card(item, '#place-template', handleCardClick, isOwner, popupConfirm, api);
+  const card = new Card(item, '#place-template', handleCardClick, profileInfo._id, popupConfirm, api);
   const cardElement = card.generateCard();
   return cardElement;
 };
@@ -94,7 +93,7 @@ function handleAddPlaceFormSubmit(values) {
   cardsListPromise.then(cardsList => {
     api.postCard(values.name, values.src)
       .then((resJson) => {
-        cardsList.addItem(createCard({_id: resJson._id, link: values.src, name: values.name, owner: resJson.owner }))
+        cardsList.addItem(createCard(resJson))
       })
       .catch(err => { console.log(err); })
   });

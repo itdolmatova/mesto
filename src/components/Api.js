@@ -57,6 +57,22 @@ export default class Api {
         })
             .then(this._resolver);
     }
+
+    setLike(cardId) {
+        return fetch(this._baseUrl + `/cards/${cardId}/likes`, {
+            method: 'PUT',
+            headers: this._headers
+        })
+            .then(this._resolver);
+    }
+
+    deleteLike(cardId) {
+        return fetch(this._baseUrl + `/cards/${cardId}/likes`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+            .then(this._resolver);
+    }
     // другие методы работы с API
 }
 
