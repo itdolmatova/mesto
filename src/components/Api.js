@@ -14,6 +14,18 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
     };
 
+    postUserInfo(values) {
+        return fetch(this._baseUrl + '/users/me', {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify ({
+                name: values.name,
+                about: values.job
+            })
+        })
+            .then(this._resolver);
+    }
+
     getUserInfo() {
         return fetch(this._baseUrl + '/users/me', {
             headers: this._headers

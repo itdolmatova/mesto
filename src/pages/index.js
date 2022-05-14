@@ -30,7 +30,7 @@ const cardsListPromise = Promise.all([userInfoPromise, initialCardsPromise]).the
   const userInfo = res[0];
   const initialCards = res[1];
 
-  profileInfo.setUserInfo({ name: userInfo.name, job: userInfo.about, _id: userInfo._id});
+  profileInfo.setUserInfo({ name: userInfo.name, job: userInfo.about, _id: userInfo._id });
   profileInfo.setAvatar(userInfo.avatar);
 
   const cardsList = new Section({
@@ -42,14 +42,13 @@ const cardsListPromise = Promise.all([userInfoPromise, initialCardsPromise]).the
 
   cardsList.renderItems();
   return cardsList;
-});
-
- 
-
+}).catch(err => { console.log(err); });
 
 function handleProfileFormSubmit(values) {
-  //api.then
-  profileInfo.setUserInfo(values);
+  api.postUserInfo(values).then(() => {
+    profileInfo.setUserInfo(values);
+  })
+    .catch(err => { console.log(err); })
 }
 
 const popupEditProfile = new PopupWithForm('.popup_edit-profile', handleProfileFormSubmit)
@@ -63,9 +62,9 @@ buttonEditProfile.addEventListener('click', function () {
 
 function handleAvatarFormSubmit(values) {
   api.editAvatar(values.src).then(() => {
-  profileInfo.setAvatar(values.src);
-  });
-  
+    profileInfo.setAvatar(values.src);
+  })
+    .catch(err => { console.log(err); })
 };
 
 const popupAvatar = new PopupWithForm('.popup_avatar', handleAvatarFormSubmit)
@@ -120,3 +119,5 @@ const validatorCard = new FormValidator(validationParams, popupAddPlace.getFormE
 validatorCard.enableValidation();
 const validatorProfile = new FormValidator(validationParams, popupEditProfile.getFormElement());
 validatorProfile.enableValidation();
+const validatorAvatar = new FormValidator(validationParams, popupAvatar.getFormElement());
+validatorAvatar.enableValidation();
