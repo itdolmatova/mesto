@@ -9,4 +9,9 @@
     background-size: 26px;
     background-repeat: no-repeat;
     background-position: center;
+    display: none;
+}
+
+.profile__avatar-editButton:hover {
+    display: flex;
 }

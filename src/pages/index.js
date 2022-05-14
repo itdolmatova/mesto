@@ -10,7 +10,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
-import PopupConfirm from '../components/PopupConfirm';
+import PopupConfirm from '../components/PopupConfirm.js';
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
@@ -47,6 +47,7 @@ const cardsListPromise = Promise.all([userInfoPromise, initialCardsPromise]).the
 
 
 function handleProfileFormSubmit(values) {
+  //api.then
   profileInfo.setUserInfo(values);
 }
 
@@ -71,7 +72,7 @@ function handleCardClick(name, link) {
 
 function createCard(item) {
   const isOwner = profileInfo._id === item.owner._id;
-  const card = new Card(item, '#place-template', handleCardClick, isOwner);
+  const card = new Card(item, '#place-template', handleCardClick, isOwner, popupConfirm, api);
   const cardElement = card.generateCard();
   return cardElement;
 };
@@ -80,7 +81,7 @@ function handleAddPlaceFormSubmit(values) {
   cardsListPromise.then(cardsList => {
     api.postCard(values.name, values.src)
       .then((resJson) => {
-        cardsList.addItem(createCard({ _id: resJson._id, link: values.src, name: values.name }))
+        cardsList.addItem(createCard({_id: resJson._id, link: values.src, name: values.name, owner: resJson.owner }))
       })
       .catch(err => { console.log(err); })
   });
@@ -93,11 +94,6 @@ buttonAddPlace.addEventListener('click', function () {
   validatorCard.resetValidation();
   popupAddPlace.open();
 });
-
-
-
-
-
 
 const validationParams = {
   formSelector: '.popup__form',

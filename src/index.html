@@ -19,6 +19,7 @@
       <section class="profile">
         <div class="profile__information">
           <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="Аватарка">
+          <div class="pfofile__avatar_editButton"></div>
           <div class="profile__info">
             <h1 class="profile__title">Жак&#8209;Ив&nbsp;Кусто</h1>
             <button class="profile__edit-button"></button>
@@ -86,9 +87,10 @@
 
     <div class="popup popup_confirm">
       <div class="popup__container">
-        <form class="popup__form" name="popup__form_confirmation">
+        <form class="popup__form popup__form_confirm" name="popup__form_confirm">
           <h2 class="popup__title">Вы уверены?</h2>
           <button type="submit" class="popup__submit-button popup__button">Да</button>
+          <button class="popup__close-button "></button>
         </form>
       </div>
     </div>

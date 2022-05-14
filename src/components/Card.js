@@ -1,12 +1,14 @@
+
 export default class Card {
-    constructor(data, cardSelector, handleCardClick, isOwner) {
+    constructor(data, cardSelector, handleCardClick, isOwner, popupConfirm, api) {
         this._photo = data.link;
         this._title = data.name;
         this._id = data._id;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._isOwner = isOwner;
-        //this._popupConfirm = ...
+        this._popupConfirm = popupConfirm;
+        this._api = api;
     }
 
     _like() {
@@ -65,10 +67,14 @@ export default class Card {
     }
 
     _handleDeleteButton(evt) {
-        this._popupConfirm.setListener(()=>{
-            this._element.remove();
-            this._element = null;
-        })
+        this._popupConfirm.setEventListeners(()=>{
+            this._api.deleteCard(this._id)
+              .then(() => {
+                this._element.remove();
+                this._element = null;
+              })
+              .catch(err => { console.log(err); })
+        });
         this._popupConfirm.open();
 
     }
