@@ -19,11 +19,11 @@
       <section class="profile">
         <div class="profile__information">
           <img class="profile__avatar" src="<%=require('./images/profile__avatar.jpg')%>" alt="Аватарка">
-          <div class="pfofile__avatar_editButton"></div>
+          <div class="profile__avatar-editButton"></div>
           <div class="profile__info">
-            <h1 class="profile__title">Жак&#8209;Ив&nbsp;Кусто</h1>
+            <h1 class="profile__title">...</h1>
             <button class="profile__edit-button"></button>
-            <p class="profile__subtitle">Исследователь океана</p>
+            <p class="profile__subtitle">...</p>
           </div>
         </div>
         <button class="profile__add-button"></button>
@@ -80,6 +80,21 @@
             <span class="popup__input-error input-src-error"></span>
           </fieldset>
           <button type="submit" class="popup__submit-button popup__button">Создать</button>
+        </form>
+        <button class="popup__close-button"></button>
+      </div>
+    </div>
+
+    <div class="popup popup_avatar">
+      <div class="popup__container">
+        <form class="popup__form popup__form_avatar" name="popup__form_avatar">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <fieldset class="popup__input-container">
+            <input class="popup__input popup__input_ctrl_src" id="input-src" name="src" placeholder="Ссылка на картинку"
+              type="url" required>
+            <span class="popup__input-error input-src-error"></span>
+          </fieldset>
+          <button type="submit" class="popup__submit-button popup__button">Сохранить</button>
         </form>
         <button class="popup__close-button"></button>
       </div>

@@ -2,7 +2,7 @@ import '../pages/index.css';
 
 import Card from '../components/Card.js';
 
-import { buttonEditProfile, buttonAddPlace } from '../utils/constants.js';
+import { buttonEditProfile, buttonAddPlace, buttonEditAvatar } from '../utils/constants.js';
 
 import FormValidator from '../components/formValidator.js';
 import Section from '../components/Section.js';
@@ -30,7 +30,8 @@ const cardsListPromise = Promise.all([userInfoPromise, initialCardsPromise]).the
   const userInfo = res[0];
   const initialCards = res[1];
 
-  profileInfo.setUserInfo({ name: userInfo.name, job: userInfo.about, avatar: userInfo.avatar, _id: userInfo._id});
+  profileInfo.setUserInfo({ name: userInfo.name, job: userInfo.about, _id: userInfo._id});
+  profileInfo.setAvatar(userInfo.avatar);
 
   const cardsList = new Section({
     items: initialCards,
@@ -60,6 +61,18 @@ buttonEditProfile.addEventListener('click', function () {
   popupEditProfile.open(values);
 });
 
+function handleAvatarFormSubmit(values) {
+  api.editAvatar(values.src).then(() => {
+  profileInfo.setAvatar(values.src);
+  });
+  
+};
+
+const popupAvatar = new PopupWithForm('.popup_avatar', handleAvatarFormSubmit)
+popupAvatar.setEventListeners();
+buttonEditAvatar.addEventListener('click', () => {
+  popupAvatar.open();
+});
 
 const popupConfirm = new PopupConfirm('.popup_confirm');
 

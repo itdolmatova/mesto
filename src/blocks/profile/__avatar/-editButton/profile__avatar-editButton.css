@@ -1,17 +1,17 @@
 .profile__avatar-editButton {
     height: 120px;
-    width: 120px;
+    width: 160px;
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    background-image: url(../../../images/edit-button.svg);
+    background: rgb(0, 0, 0);
+    background-image: url(../../../../images/edit-button.svg);
     background-size: 26px;
     background-repeat: no-repeat;
     background-position: center;
-    display: none;
+    opacity: 0;
 }
 
 .profile__avatar-editButton:hover {
-    display: flex;
+    opacity: 0.8;
 }

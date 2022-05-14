@@ -46,6 +46,17 @@ export default class Api {
         })
             .then(this._resolver);
     }
+
+    editAvatar(src) {
+        return fetch(this._baseUrl + '/users/me/avatar', {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: src
+            })
+        })
+            .then(this._resolver);
+    }
     // другие методы работы с API
 }
 
