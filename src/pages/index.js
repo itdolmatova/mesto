@@ -47,6 +47,7 @@ const cardsListPromise = Promise.all([userInfoPromise, initialCardsPromise]).the
 function handleProfileFormSubmit(values) {
   api.postUserInfo(values).then(() => {
     profileInfo.setUserInfo(values);
+    popupEditProfile.close();
   })
     .catch(err => { console.log(err); })
 }
@@ -63,6 +64,7 @@ buttonEditProfile.addEventListener('click', function () {
 function handleAvatarFormSubmit(values) {
   api.editAvatar(values.src).then(() => {
     profileInfo.setAvatar(values.src);
+    popupAvatar.close();
   })
     .catch(err => { console.log(err); })
 };
@@ -93,7 +95,8 @@ function handleAddPlaceFormSubmit(values) {
   cardsListPromise.then(cardsList => {
     api.postCard(values.name, values.src)
       .then((resJson) => {
-        cardsList.addItem(createCard(resJson))
+        cardsList.addItem(createCard(resJson));
+        popupAddPlace.close();
       })
       .catch(err => { console.log(err); })
   });

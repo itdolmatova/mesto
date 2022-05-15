@@ -39,7 +39,7 @@ export default class Card {
 
         this._setEventListeners();
         
-        if (this._isLikedByMe()) {
+        if (this._checkLikedByMe()) {
             this._likeButton.classList.add('place__like_active');
         }
         this._likesCounter.textContent = this._likes.length;
@@ -70,13 +70,13 @@ export default class Card {
       
     }
 
-    _isLikedByMe(){
+    _checkLikedByMe(){
         return this._likes.some(e => e._id === this._profileId);
     }
 
 
     _handleLikeButton(evt) {
-        if (this._isLikedByMe()) {
+        if (this._checkLikedByMe()) {
             this._api.deleteLike(this._id).then(resJson => {
                 this._likes = resJson.likes;
                 this._likesCounter.textContent = this._likes.length;
