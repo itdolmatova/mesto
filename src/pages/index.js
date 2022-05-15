@@ -74,6 +74,7 @@ buttonEditAvatar.addEventListener('click', () => {
 });
 
 const popupConfirm = new PopupConfirm('.popup_confirm');
+popupConfirm.setEventListeners();
 
 const popupWithImage = new PopupWithImage('.popup_image');
 popupWithImage.setEventListeners();

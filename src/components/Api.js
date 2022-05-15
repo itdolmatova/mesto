@@ -4,10 +4,9 @@ export default class Api {
         this._headers = options.headers;
     }
 
-    _resolver = (res) => {
+    _resolve = (res) => {
         if (res.ok) {
             const resJson = res.json();
-            console.log(resJson);
             return resJson;
         }
 
@@ -23,21 +22,21 @@ export default class Api {
                 about: values.job
             })
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
 
     getUserInfo() {
         return fetch(this._baseUrl + '/users/me', {
             headers: this._headers
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
 
     getCards() {
         return fetch(this._baseUrl + '/cards', {
             headers: this._headers
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
 
     postCard(name, link) {
@@ -48,7 +47,7 @@ export default class Api {
                 name: name,
                 link: link
             })
-        }).then(this._resolver);
+        }).then(this._resolve);
     }
 
     deleteCard(cardId) {
@@ -56,7 +55,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
 
     editAvatar(src) {
@@ -67,7 +66,7 @@ export default class Api {
                 avatar: src
             })
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
 
     setLike(cardId) {
@@ -75,7 +74,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
 
     deleteLike(cardId) {
@@ -83,7 +82,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-            .then(this._resolver);
+            .then(this._resolve);
     }
     // другие методы работы с API
 }

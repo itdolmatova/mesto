@@ -92,16 +92,15 @@ export default class Card {
     }
 
     _handleDeleteButton(evt) {
-        this._popupConfirm.setEventListeners(()=>{
+        this._popupConfirm.open(()=>{
             this._api.deleteCard(this._id)
               .then(() => {
                 this._element.remove();
                 this._element = null;
+                this._popupConfirm.close();
               })
               .catch(err => { console.log(err); })
         });
-        this._popupConfirm.open();
-
     }
 
 }
