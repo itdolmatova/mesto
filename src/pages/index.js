@@ -2,7 +2,7 @@ import '../pages/index.css';
 
 import Card from '../components/Card.js';
 
-import { buttonEditProfile, buttonAddPlace, buttonEditAvatar } from '../utils/constants.js';
+import { buttonEditProfile, buttonAddPlace, buttonEditAvatar, validationParams } from '../utils/constants.js';
 
 import FormValidator from '../components/formValidator.js';
 import Section from '../components/Section.js';
@@ -109,15 +109,6 @@ buttonAddPlace.addEventListener('click', function () {
   validatorCard.resetValidation();
   popupAddPlace.open();
 });
-
-const validationParams = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
 
 const validatorCard = new FormValidator(validationParams, popupAddPlace.getFormElement());
 validatorCard.enableValidation();
