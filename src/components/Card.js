@@ -81,13 +81,13 @@ export default class Card {
                 this._likes = resJson.likes;
                 this._likesCounter.textContent = this._likes.length;
                 this._likeButton.classList.remove('place__like_active');
-            });
+            }).catch(err => { console.log(err)});
         } else {
             this._api.setLike(this._id).then(resJson => {
                 this._likes = resJson.likes;
                 this._likesCounter.textContent = this._likes.length;
                 this._likeButton.classList.add('place__like_active');    
-            })
+            }).catch(err => { console.log(err)});
         }
     }
 
@@ -99,7 +99,7 @@ export default class Card {
                 this._element = null;
                 this._popupConfirm.close();
               })
-              .catch(err => { console.log(err); })
+              .catch(err => { console.log(err)});
         });
     }
 
